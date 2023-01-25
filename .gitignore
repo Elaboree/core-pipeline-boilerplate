@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/PipelineBoilerplate/DesignTimeBuild
+*.v1
+*.suo
+/.vs/PipelineBoilerplate/project-colors.json
+*.user
