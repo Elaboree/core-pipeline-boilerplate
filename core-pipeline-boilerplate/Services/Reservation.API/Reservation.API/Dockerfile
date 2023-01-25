@@ -3,15 +3,16 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Services/Reservation.API/Reservation.API/Reservation.API.csproj", "Services/Reservation.API/Reservation.API/"]
-COPY ["Services/Reservation.API/Reservation.API.Service/Reservation.API.Service.csproj", "Services/Reservation.API/Reservation.API.Service/"]
-COPY ["Services/Reservation.API/Reservation.API.Infrastructure/Reservation.API.Infrastructure.csproj", "Services/Reservation.API/Reservation.API.Infrastructure/"]
-COPY ["Services/Reservation.API/Reservation.Models/Reservation.API.Models.csproj", "Services/Reservation.API/Reservation.Models/"]
-RUN dotnet restore "Services/Reservation.API/Reservation.API/Reservation.API.csproj"
+COPY ["core-pipeline-boilerplate/Services/Reservation.API/Reservation.API/Reservation.API.csproj", "core-pipeline-boilerplate/Services/Reservation.API/Reservation.API/"]
+COPY ["core-pipeline-boilerplate/Services/Reservation.API/Reservation.API.Service/Reservation.API.Service.csproj", "core-pipeline-boilerplate/Services/Reservation.API/Reservation.API.Service/"]
+COPY ["core-pipeline-boilerplate/Services/Reservation.API/Reservation.API.Infrastructure/Reservation.API.Infrastructure.csproj", "core-pipeline-boilerplate/Services/Reservation.API/Reservation.API.Infrastructure/"]
+COPY ["core-pipeline-boilerplate/Services/Reservation.API/Reservation.Models/Reservation.API.Models.csproj", "core-pipeline-boilerplate/Services/Reservation.API/Reservation.Models/"]
+RUN dotnet restore "core-pipeline-boilerplate/Services/Reservation.API/Reservation.API/Reservation.API.csproj"
 COPY . .
-WORKDIR "/src/Services/Reservation.API/Reservation.API"
+WORKDIR "/src/core-pipeline-boilerplate/Services/Reservation.API/Reservation.API"
 RUN dotnet build "Reservation.API.csproj" -c Release -o /app/build
 
 FROM build AS publish

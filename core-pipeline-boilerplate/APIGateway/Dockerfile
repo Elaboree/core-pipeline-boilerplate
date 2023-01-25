@@ -3,13 +3,12 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 
-
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["APIGateway/APIGateway.csproj", "APIGateway/"]
-RUN dotnet restore "APIGateway/APIGateway.csproj"
+COPY ["core-pipeline-boilerplate/APIGateway/APIGateway.csproj", "core-pipeline-boilerplate/APIGateway/"]
+RUN dotnet restore "core-pipeline-boilerplate/APIGateway/APIGateway.csproj"
 COPY . .
-WORKDIR "/src/APIGateway"
+WORKDIR "/src/core-pipeline-boilerplate/APIGateway"
 RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
