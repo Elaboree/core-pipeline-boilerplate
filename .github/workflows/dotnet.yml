@@ -32,8 +32,8 @@ jobs:
       with:
         image: oyilmazz/pipeline-boilerplate
         tags: v1, latest
-        registry: ./core-pipeline-boilerplate\Services\Contact.API\Contact.API/Dockerfile
-        dockerfile: Dockerfile.ci
+        registry: docker.io
+        dockerfile: ./core-pipeline-boilerplate/Services/Contact.API/Contact.API/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
           
